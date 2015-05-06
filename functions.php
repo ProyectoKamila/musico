@@ -30,3 +30,10 @@ function theme_custom_types() {
         'singular' => 'anuncio'
     ));
 }
+add_custom_taxonomy(array(
+        'name' => 'categoria',
+        'singular' => 'categoria',
+        'genero' => 'f',
+        'post_type' => 'anuncios',
+        'hierarchical' => true
+    ));

@@ -36,10 +36,26 @@
 
                                                 <select name="estado" id="estado" onchange="load_form(this.value);" required>
                                                     <option>Estado</option>
-                                                    <option id="rpr_state-alabama" value="Alabama">Alabama</option>
-                                                    <option id="rpr_state-alaska" value="Alaska">Alaska</option>
-                                                    <option id="rpr_state-arizona" value="Arizona">Arizona</option>
-                                                    <option id="rpr_state-arkansas" value="Arkansas">Arkansas</option>
+                                                    <?php
+                                                    $args = array(
+                                                        'child_of' => 0,
+                                                        'parent' => '',
+                                                        'orderby' => 'name',
+                                                        'order' => 'ASC',
+                                                        'hide_empty' => 0,
+                                                        'hierarchical' => 1,
+                                                        'exclude' => '',
+                                                        'include' => '',
+                                                        'number' => '',
+                                                        'taxonomy' => 'categoria',
+                                                        'pad_counts' => false
+                                                    );
+                                                    ?>
+                                                    <?php $categories = get_categories($args); ?> 
+                                                    <?php foreach ($categories as $category) { ?>
+                                                        <option id="rpr_state-alabama" value="Alabama"><?php echo  $category->name; ?></option>
+                                                    <?php } ?>
+
                                                 </select>
 
                                             </div>
@@ -47,11 +63,26 @@
 
                                                 <select id="ciudad" onchange="load_form(this.value);" required>
                                                     <option>Ciudad</option>
-                                                    <option id="rpr_cuidad-alabaster" value="Alabaster">Alabaster</option>
-                                                    <option id="rpr_cuidad-albertville" value="Albertville">Albertville</option>
-                                                    <option id="rpr_cuidad-alexander_city" value="Alexander City">Alexander City</option>
-                                                    <option id="rpr_cuidad-andalusia" value="Andalusia">Andalusia</option>
-                                                    <option id="rpr_cuidad-anniston" value="Anniston">Anniston</option>
+                                                          <?php
+                                                    $sargs = array(
+                                                        'child_of' => '',
+                                                        'parent' => 4,
+                                                        'orderby' => 'name',
+                                                        'order' => 'ASC',
+                                                        'hide_empty' => 0,
+                                                        'hierarchical' => 4,
+                                                        'exclude' => '',
+                                                        'include' => '',
+                                                        'number' => '',
+                                                        'taxonomy' => 'categoria',
+                                                        'pad_counts' => false
+                                                    );
+                                                    ?>
+                                                    <?php $subcategories = get_categories($sargs); ?> 
+                                                    <?php foreach ($subcategories as $subcategory) { ?>
+                                                        <option id="" value=""><?php echo  $subcategory->name; ?></option>
+                                                    <?php } ?>
+                                               
                                                 </select>
 
                                             </div>
@@ -64,9 +95,9 @@
                                             <input type="text" id="s" name="s" style="display:none" required>
                                             <input type="submit" class="col-lg-1 col-md-1 col-sm-2 col-xs-2 enviar hidden-xs hidden-sm hidden-md hidden-lg" onclick="load_form();">
                                         </form>
-                                        
-                                        
-                                    
+
+
+
                                     </div>
 
 
@@ -95,30 +126,29 @@
                 <div class="container-fluid items">
                     <div class="row">
 
-                         <?php
-                                //Gather comments for a specific page/post 
-                                $comments = get_comments(array(
-                                    'status' => 'approve' //Change this to the type of comments to be displayed
-                                ));
-                               
-                                ?>
-                            <?php foreach ($comments as $comment){?>
-                         
-                             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+<?php
+//Gather comments for a specific page/post 
+$comments = get_comments(array(
+    'status' => 'approve' //Change this to the type of comments to be displayed
+        ));
+?>
+                        <?php foreach ($comments as $comment) { ?>
+
+                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                                 <div class="thumbnail">
-                                    <?php echo get_avatar($comment->comment_author_email); ?> 
+                            <?php echo get_avatar($comment->comment_author_email); ?> 
                                 </div>
                             </div>
                             <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
                                 <div class="ads-text">
-                                    <a href="author/<?php echo get_comment_author_link(); ?>">  <p><?php echo $comment->comment_date;?> - <?php echo $comment->comment_content;?></p></a>
+                                    <a href="author/<?php echo get_comment_author_link(); ?>">  <p><?php echo $comment->comment_date; ?> - <?php echo $comment->comment_content; ?></p></a>
                                 </div>
                             </div>
                             <div class="clearfix"></div>
-                    <?php } ?>
+<?php } ?>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+</section>
 <?php get_footer(""); ?>
