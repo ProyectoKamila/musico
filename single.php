@@ -1,8 +1,9 @@
 <?php get_header()?>
-<section class="ads">
+<section class="ads espaciado-top">
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <?php get_template_part('sidebar-box');?>
+			<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
 	<?php while (have_posts()) { the_post();?>
 
 			<?php the_title()?>	
