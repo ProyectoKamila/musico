@@ -1,4 +1,5 @@
-<?php get_header(""); ?>
+<?php // custom_all('ciudad'); ?>
+    <?php get_header(""); ?>
 <section class="">
     <div class="container">
         <div class="row">
@@ -26,9 +27,10 @@
 
                                                 <select id="instrumento" onchange="load_form(this.value);" required>
                                                     <option>Instrumento</option>
-                                                    <option>Guitara</option>
+                                                    <?php custom_all('instrumento'); ?>
+<!--                                                    <option>Guitara</option>
                                                     <option>Teclado</option>
-                                                    <option>Tolo</option>
+                                                    <option>Tolo</option>-->
                                                 </select>
 
                                             </div>

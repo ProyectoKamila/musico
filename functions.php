@@ -1,4 +1,5 @@
 <?php
+
 //Cambior el logo de inicio de Sesion
 add_action('login_head', 'custom_login_logo');
 include('library/login-logo.php');
@@ -22,7 +23,13 @@ include('library/portada.php');
 include('library/imgurl.php');
 //funcion para acortar cadenas
 include('library/limited-caracter.php');
-show_admin_bar( false );
+
+include('library/custom.php');
+
+
+
+show_admin_bar(false);
+
 //Crear Post Personalizados
 function theme_custom_types() {
     add_custom_post_type(array(
@@ -30,10 +37,32 @@ function theme_custom_types() {
         'singular' => 'anuncio'
     ));
 }
+
 add_custom_taxonomy(array(
-        'name' => 'categoria',
-        'singular' => 'categoria',
-        'genero' => 'f',
-        'post_type' => 'anuncios',
-        'hierarchical' => true
-    ));
+    'name' => 'categoria',
+    'singular' => 'categoria',
+    'genero' => 'f',
+    'post_type' => 'anuncios',
+    'hierarchical' => true
+));
+
+$current_user = wp_get_current_user();
+//    debug($current_user->roles[0]);
+if ($current_user->roles[0] == 'subscriber') {
+
+    function remove_menus() {
+        remove_menu_page('index.php');                  //Dashboard
+        remove_menu_page('edit.php');                   //Posts
+//  remove_menu_page( 'edit.php?post_type=anuncios' );                   //Posts
+        remove_menu_page('upload.php');                 //Media
+        remove_menu_page('edit.php?post_type=page');    //Pages
+        remove_menu_page('edit-comments.php');          //Comments
+        remove_menu_page('themes.php');                 //Appearance
+        remove_menu_page('plugins.php');                //Plugins
+        remove_menu_page('users.php');                  //Users
+        remove_menu_page('tools.php');                  //Tools
+        remove_menu_page('options-general.php');        //Settings
+    }
+
+    add_action('admin_menu', 'remove_menus');
+}
