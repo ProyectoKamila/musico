@@ -1,0 +1,217 @@
+html{
+	height: 100%;
+	font-family: 'Open Sans';
+}
+body{
+	margin: 0 auto;
+	padding: 0px;
+	height: 100%;
+}
+header{
+	height: 50px;
+	background: @negro-90;
+	width: 100%;
+	position: relative;
+	z-index: 1;
+	.menu a{
+		color: white;
+		padding-top: 16px;
+	}
+	.menu a:hover{
+		text-decoration: none;
+	}
+	.menu li{
+		background: none;
+	}
+	.nav > li > a:hover, .nav > li > a:focus{
+		background: none !important;
+	}
+}
+.main{
+	width: 100%;
+	background: url('../images/back.jpg') top center no-repeat;
+	background-size: cover;
+	
+}
+.text-right{
+	text-align: right;
+	font-weight: 200;
+	font-size: 18px; 
+	color: white;
+	margin-bottom: 15%;
+	padding: 10px;
+}
+.search{
+	width: 100%;
+	height: 50%;
+	.active{
+		color: white !important;
+	}
+	.search-type{
+		height: 50px;
+		background: url(../images/gau.png) top center;
+		text-align: center;
+		line-height: 50px;
+		font-size: 30px;
+		margin-bottom: 10px;
+		color: #222121;
+		text-shadow: 1px 2px 5px #ccc;
+		cursor: pointer;
+		transition: 1s all ease-in-out;
+		span{
+			text-align: right;
+			margin-left: 40px;
+		}
+	}
+	.styled-select {
+   		 height: 34px;
+		 overflow: hidden;
+		 border-right: 1px solid #fff;
+		 background: url(../images/fondo.png);
+		 
+		margin-bottom: 10px;
+		 select {
+			   background: transparent;
+			   width: 100%;
+			   padding: 5px;
+			   font-size: 16px;
+			   line-height: 1;
+			   border: 0;
+			   border-radius: 0;
+			   height: 100%;
+			   -webkit-appearance: none;
+			   outline: none;
+   			}
+   }
+   .no-borde{
+   	border-right: 0px !important;
+   }
+   .content-large{
+   	padding-left: 0px;
+   	padding-right: 0px;
+   	background: white;
+   	height: 42px;
+   	margin-bottom: 10px;
+   	border-radius: 5px;
+   	margin-bottom: 10%;
+	   .large-input{
+	   	height: 42px;
+	   	border:none;
+	   	border-right: 1px solid #ccc; 
+	   	-webkit-appearance: none;
+	   	background: none;
+	   	text-indent: 10px;
+	   }
+	   .enviar{
+	   	height: 42px;
+	   	border: none;
+		-webkit-appearance: none;
+		background: url(../images/lupa.png) center no-repeat;
+		background-size: 50%;
+	   }
+   }
+}
+.ads{
+	width: 100%;
+	background: @gris;
+	.title{
+		h1{
+			text-align: center;
+		}
+		h2{
+			text-align: center;
+			font-size: 16px;
+			font-weight: 200;
+		}
+	}
+	.items{
+		.thumbnail{
+			width: 50px;
+			height: 50px;
+			position: relative;
+			background: black;
+			overflow: hidden;
+			img{
+				width: 100%;
+				height: 100%;
+			}
+		}
+		.ads-text{
+			padding-top: 10px;
+		}
+
+	}
+}
+.videos{
+	padding-top: 80px;
+	.item{
+		position: relative;	
+		height: 160px;
+		width: 100%;
+		background: yellow;
+		margin-bottom: 10px;
+		overflow: hidden;
+			&first-child{
+				margin-top: 100px;
+				position: relative;
+			}
+		iframe{
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+}
+footer{
+	width: 100%;
+	min-height: 50px;
+	margin-top: 3%;
+	background: @negro-90;
+	p{
+		text-align: center;
+		color: white;
+		font-size: 16px;
+		a{
+			color: white;
+			text-decoration: none;
+
+		}
+		a:hover{
+			color: white;
+			text-decoration: none;
+		}
+	}
+}
+.espaciado-top{
+    margin-top: 20%;
+}
+.author{
+    position:relative;
+    clear:both;
+    width:100%;
+    background: @gris;
+.profile-dates{
+    width: 100%;
+    position:relative;
+    .title{
+        width: 100%;
+        height: 40px;
+        text-align: center;
+        background: #212121;
+        margin-top: 5px;
+        line-height:40px;
+        color: @gris;
+    }
+    img{
+        width: 100%;
+        height: 220px;
+            
+    }
+}
+}
+.logo{
+    width: auto;
+    max-width: 200px;
+    height: 40px;
+    margin-top: 4px;
+}
