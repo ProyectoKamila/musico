@@ -13,7 +13,7 @@ get_header('');
                     <h2>La comunidad”Músico Disponible” es una pequeña red social que permite un socio busca urgentemente músicos</h2>
                 </div>
             </div>
-            <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
+            <div class="col-lg-8 col-md-18 col-sm-8 col-xs-12">
                 <h3 class="">Resultados	</h3>
                 <div class="container-fluid items">
                     <div class="row">
