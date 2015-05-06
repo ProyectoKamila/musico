@@ -23,11 +23,8 @@ include('library/imgurl.php');
 //funcion para acortar cadenas
 include('library/limited-caracter.php');
 show_admin_bar( false );
-
-
 //Crear Post Personalizados
 function theme_custom_types() {
-
     add_custom_post_type(array(
         'type' => 'Anuncios',
         'singular' => 'anuncio'

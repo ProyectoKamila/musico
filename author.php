@@ -18,7 +18,7 @@
                     <?php echo get_field('estado');?>
                     <?php echo get_field('ciudad');?>
                     <?php
- $x = get_field_object('instrumento');
+ $x = get_field;
   debug($x,false);
                     ?>
                 </div>
