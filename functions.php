@@ -36,13 +36,21 @@ show_admin_bar(false);
 function theme_custom_types() {
     add_custom_post_type(array(
         'type' => 'Anuncios',
+        'supports'=>array('comments', 'editor', 'author'),
         'singular' => 'anuncio'
     ));
 }
 
 add_custom_taxonomy(array(
-    'name' => 'categoria',
-    'singular' => 'categoria',
+    'name' => 'estado',
+    'singular' => 'estado',
+    'genero' => 'f',
+    'post_type' => 'anuncios',
+    'hierarchical' => true
+));
+add_custom_taxonomy(array(
+    'name' => 'ciudad',
+    'singular' => 'ciudad',
     'genero' => 'f',
     'post_type' => 'anuncios',
     'hierarchical' => true

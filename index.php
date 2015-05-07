@@ -1,5 +1,5 @@
-<?php // custom_all('ciudad'); ?>
-    <?php get_header(""); ?>
+<?php // custom_all('ciudad');  ?>
+<?php get_header(""); ?>
 <section class="">
     <div class="container">
         <div class="row">
@@ -53,7 +53,7 @@
                                                     ?>
                                                     <?php $categories = get_categories($args); ?> 
                                                     <?php foreach ($categories as $category) { ?>
-                                                        <option id="rpr_state-alabama" value="Alabama"><?php echo  $category->name; ?></option>
+                                                        <option id="rpr_state-alabama" value="Alabama"><?php echo $category->name; ?></option>
                                                     <?php } ?>
 
                                                 </select>
@@ -63,7 +63,7 @@
 
                                                 <select id="ciudad" onchange="load_form(this.value);" required>
                                                     <option>Ciudad</option>
-                                                          <?php
+                                                    <?php
                                                     $sargs = array(
                                                         'child_of' => '',
                                                         'parent' => 4,
@@ -80,9 +80,9 @@
                                                     ?>
                                                     <?php $subcategories = get_categories($sargs); ?> 
                                                     <?php foreach ($subcategories as $subcategory) { ?>
-                                                        <option id="" value=""><?php echo  $subcategory->name; ?></option>
-                                                    <?php } ?>
-                                               
+                                                        <option id="" value=""><?php echo $subcategory->name; ?></option>
+                                                    <?php }  wp_reset_query();?>
+
                                                 </select>
 
                                             </div>
@@ -126,44 +126,60 @@
                 <div class="container-fluid items">
                     <div class="row">
 
-<?php
-                       query_posts(array('post_type' => 'anuncios', 'posts_per_page' => 10));
-                       while (have_posts()) {
-                           the_post();
-                           ?>
-                           <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                               <div class="thumbnail">
-                                   <?php 
-                                   echo get_avatar(get_the_author_meta('user_email')); 
-                                       
-                                   ?> 
-                                   </div>
+                        <?php
+                        query_posts(array('post_type' => 'anuncios', 'posts_per_page' => 10));
+                        while (have_posts()) {
+                            the_post();
+                            ?>
+                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                                <div class="thumbnail">
+                                    <?php
+                                    echo get_avatar(get_the_author_meta('user_email'));
+                                    ?> 
+                                </div>
                             </div>
-                        <div class="col-lg-11 col-md-11 col-sm-10 col-xs-10 col-xs-offset-1 col-lg-offset-0 col-md-offset-0 col-sm-offset-0">
-                            <div class="ads-text">
-                                <a href="<?php the_permalink();?>">  <p>
-                                           Publicado el <?php echo get_the_date('d M Y '); ?> - a las <?php echo get_the_date('H M');?>
-                                               <?php echo get_the_title(); ?> - <?php echo get_the_content();?> que sepa tocar  
-                                               <?php foreach (get_field('instrumento') as $instrumento) {
-                                           echo  $instrumento. ', ';
-                                            } ?> en 
-                                <?php               $categoria = pk_get_the_category(get_the_ID(),'categoria');
-                               $r = 1;
-                               foreach ($categoria as $category) {
-                                   if($r==1){
-                                   echo $category->name.', ';
-                                   $r++;
-                               }else{
-                                    echo $category->name;
-                               }
-                           }?>
-                                       </p>
-                                   </a>
+                            <div class="col-lg-11 col-md-11 col-sm-10 col-xs-10 col-xs-offset-1 col-lg-offset-0 col-md-offset-0 col-sm-offset-0">
+                                <div class="ads-text">
+                                    <a href="<?php the_permalink(); ?>">  
+                                        <p>
+                                            Publicado el <?php echo get_the_date('d M Y '); ?> - a las <?php echo get_the_date('H M'); ?>
+                                            <?php echo get_the_title(); ?> - <?php echo get_the_content(); ?> que sepa tocar  
+                                            <?php
+                                            foreach (get_field('instrumento') as $instrumento) {
+                                                echo $instrumento . ', ';
+                                            }
+                                            ?> en 
+                                            <?php
+                                            $categoria = pk_get_the_category(get_the_ID(), 'estado');
+                                            $r = 1;
+                                            foreach ($categoria as $category) {
+                                                if ($r == 1) {
+                                                    echo $category->name . ', ';
+                                                    $r++;
+                                                } else {
+                                                    echo $category->name;
+                                                }
+                                            }
+                                            ?>
+                                            <?php
+                                            $categoria = pk_get_the_category(get_the_ID(), 'ciudad');
+                                            $r = 1;
+                                            foreach ($categoria as $category) {
+                                                if ($r == 1) {
+                                                    echo $category->name . ', ';
+                                                    $r++;
+                                                } else {
+                                                    echo $category->name;
+                                                }
+                                            }
+                                            ?>
+                                        </p>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="clearfix"></div>
-                       <?php } ?>
-                      </div>  
+                            <div class="clearfix"></div>
+<?php } ?>
+                    </div>  
                 </div>
             </div>
         </div>
