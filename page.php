@@ -26,43 +26,35 @@
 
                             </div>
                         </div>
-                        <?php
-                        //Gather comments for a specific page/post 
-                        $comments = get_comments(array(
-                            'post_id' => $post_id,
-                            'status' => 'approve' //Change this to the type of comments to be displayed
-                        ));
-                        ?>
-<?php foreach ($comments as $comment) { ?>
-
-                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                                <div class="thumbnail">
-    <?php echo get_avatar($comment->comment_author_email); ?> 
-                                </div>
-                            </div>
-                            <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
-                                <div class="ads-text">
-                                    <a href="author/<?php echo get_comment_author_link(); ?>">  <p><?php echo $comment->comment_date; ?> - <?php echo $comment->comment_content; ?></p></a>
-                                </div>
-                            </div>
                             <div class="clearfix"></div>
-                            <?php } ?>
-                        <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
-                                <?php if (have_comments()) : ?>
-                                <h3 id="comments-title"><?php
-                                    printf(
-                                            _n('One Response to %2$s', '%1$s Responses to %2$s', get_comments_number(), 'twentyten'), number_format_i18n(get_comments_number()), '<em>' . get_the_title() . '</em>'
-                                    );
-                                    ?></h3>
-                                // [and more, of course...]
+                                 <h3 class="">Comentarios</h3>
                             <?php
-                            else : // or, if we don't have comments:
-                                if (!comments_open()) :
-                                    ?>
-                                    <p class="nocomments"><?php _e('Comments are closed.', 'twentyten'); ?></p>
-    <?php endif; // end ! comments_open()   ?>
-<?php endif; // end have_comments()   ?> 
-                        </div>
+                            //Gather comments for a specific page/post 
+                            $comments = get_comments(array(
+                                'post_id' => $post_id,
+                                'status' => 'approve' //Change this to the type of comments to be displayed
+                            ));
+                            ?>
+                            <?php foreach ($comments as $comment) { ?>
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                                    <div class="thumbnail">
+                                        <?php echo get_avatar($comment->comment_author_email); ?> 
+                                    </div>
+                                </div>
+                                <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
+                                    <div class="ads-text">
+                                        
+                                        <p>
+                                            Publicado el <?php echo $comment->comment_date; ?> -
+                                            <?php echo $comment->comment_content ?> 
+                                        </p>
+
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            <?php } ?>
+                        
+                
 
 
                     </div>
