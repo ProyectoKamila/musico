@@ -14,7 +14,7 @@
                             <p><?php echo $curauth->user_description;?> </p>
                             <p>Registrado desde: <?php echo $curauth->user_registered;
                             
-                            $author_id = get_the_author_meta('ID');
+                            $author_id = $curauth->ID;
                             ?></p>
                             <p>Se tocar: 
                                 <?php 
