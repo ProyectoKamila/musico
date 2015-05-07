@@ -52,9 +52,10 @@
                             <?php
                             //Gather comments for a specific page/post 
                             $comments = get_comments(array(
-                                'post_id' => $post_id,
+                                'post_id' => get_the_ID(),
                                 'status' => 'approve' //Change this to the type of comments to be displayed
                             ));
+//                            debug(get_the_ID());
                             ?>
                             <?php foreach ($comments as $comment) { ?>
                                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
@@ -74,6 +75,8 @@
                                 </div>
                                 <div class="clearfix"></div>
                             <?php } ?>
+                            <?php // debug($post->comment_status) ?>
+                            <?php comments_template(); ?>
                             <div class="clearfix"></div>
                         <?php } ?>
 
