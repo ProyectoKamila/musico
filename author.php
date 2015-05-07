@@ -18,9 +18,10 @@
                             ?></p>
 
 
-                            <p><?php echo get_field('instrumento', 'user_'. $author_id ); ?></p>
+                            <p>Se tocar: <?php echo get_field('instrumento', 'user_'. $author_id ); ?></p>
+                            <p>Nivel: <?php echo get_field('instrumento', 'user_'. $author_id ); ?></p>
                             <p><?php echo get_field('estado', 'user_'. $author_id ); ?></p>
-                             <p><?php echo get_field('ciudad', 'user_'. $author_id ); ?></p>
+                             <p><?php echo get_field('estado', 'user_'. $author_id ); ?></p>
                             
                            
 

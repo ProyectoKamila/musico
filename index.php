@@ -28,9 +28,7 @@
                                                 <select id="instrumento" onchange="load_form(this.value);" required>
                                                     <option>Instrumento</option>
                                                     <?php custom_all('instrumento'); ?>
-<!--                                                    <option>Guitara</option>
-                                                    <option>Teclado</option>
-                                                    <option>Tolo</option>-->
+
                                                 </select>
 
                                             </div>
@@ -129,26 +127,36 @@
                     <div class="row">
 
 <?php
-//Gather comments for a specific page/post 
-$comments = get_comments(array(
-    'status' => 'approve' //Change this to the type of comments to be displayed
-        ));
-?>
-                        <?php foreach ($comments as $comment) { ?>
-
-                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                                <div class="thumbnail">
-                            <?php echo get_avatar($comment->comment_author_email); ?> 
-                                </div>
+                       query_posts(array('post_type' => 'anuncios', 'posts_per_page' => 10));
+                       while (have_posts()) {
+                           the_post();
+                           ?>
+                           <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                               <div class="thumbnail">
+                                   <?php 
+                                   echo get_avatar(get_the_author_meta('user_email')); 
+                                       
+                                   ?> 
+                                   </div>
                             </div>
-                            <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
-                                <div class="ads-text">
-                                    <a href="author/<?php echo get_comment_author_link(); ?>">  <p><?php echo $comment->comment_date; ?> - <?php echo $comment->comment_content; ?></p></a>
-                                </div>
+                        <div class="col-lg-11 col-md-11 col-sm-10 col-xs-10 col-xs-offset-1">
+<?php echo '<span style="text-transform: capitalize;">'.get_the_date('M, d y').'</span> '
+                                       .get_the_date('(m d y)').' - '
+                                       .get_the_title().', en '.
+                                       get_field('estado').', '.
+                                       get_field('ciudad').' que toque ';
+                                       foreach (get_field('instrumento') as $instrumento) {
+//                                            debug($value);
+                                           echo ', '.$instrumento;
+                                       }
+                               ?>   
+                            <div class="ads-text">
+                                   <a href="author/<?php echo get_comment_author_link(); ?>">  <p><?php echo $comment->comment_date; ?> - <?php echo $comment->comment_content; ?></p></a>
                             </div>
-                            <div class="clearfix"></div>
-<?php } ?>
-                    </div>
+                        </div>
+                        <div class="clearfix"></div>
+                       <?php } ?>
+                      </div>  
                 </div>
             </div>
         </div>
