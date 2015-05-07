@@ -16,12 +16,26 @@
                             
                             $author_id = get_the_author_meta('ID');
                             ?></p>
-
-
-                            <p>Se tocar: <?php echo get_field('instrumento', 'user_'. $author_id ); ?></p>
-                            <p>Nivel: <?php echo get_field('instrumento', 'user_'. $author_id ); ?></p>
-                            <p><?php echo get_field('estado', 'user_'. $author_id ); ?></p>
-                             <p><?php echo get_field('estado', 'user_'. $author_id ); ?></p>
+                            <p>Se tocar: 
+                                <?php 
+                                $instrumento = get_field('instrumento', 'user_'.$curauth->ID );
+                                if($instrumento != false){
+                                    $r = 1;
+                                    foreach ($instrumento as $i) {
+//                                        debug($i);
+                                        if($r !=1 ){
+                                        echo ', ';
+                                    }
+                                    echo $i;
+                                    $r++;
+                                    }
+                                }
+//                                echo get_field('instrumento', 'user_'. $curauth->ID ); 
+                                ?>
+                            </p>
+                            <p>Nivel: <?php echo get_field('nivel', 'user_'. $curauth->ID ); ?></p>
+                            <p><?php echo get_field('estado', 'user_'. $curauth->ID ); ?></p>
+                             <p><?php echo get_field('ciudad', 'user_'. $curauth->ID ); ?></p>
                             
                            
 
