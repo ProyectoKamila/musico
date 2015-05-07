@@ -139,19 +139,26 @@
                                    ?> 
                                    </div>
                             </div>
-                        <div class="col-lg-11 col-md-11 col-sm-10 col-xs-10 col-xs-offset-1">
-<?php echo '<span style="text-transform: capitalize;">'.get_the_date('M, d y').'</span> '
-                                       .get_the_date('(m d y)').' - '
-                                       .get_the_title().', en '.
-                                       get_field('estado').', '.
-                                       get_field('ciudad').' que toque ';
-                                       foreach (get_field('instrumento') as $instrumento) {
-//                                            debug($value);
-                                           echo ', '.$instrumento;
-                                       }
-                               ?>   
+                        <div class="col-lg-11 col-md-11 col-sm-10 col-xs-10 col-xs-offset-1 col-lg-offset-0 col-md-offset-0 col-sm-offset-0">
                             <div class="ads-text">
-                                   <a href="author/<?php echo get_comment_author_link(); ?>">  <p><?php echo $comment->comment_date; ?> - <?php echo $comment->comment_content; ?></p></a>
+                                <a href="<?php the_permalink();?>">  <p>
+                                           Publicado el <?php echo get_the_date('d M Y '); ?> - a las <?php echo get_the_date('H M');?>
+                                               <?php echo get_the_title(); ?> - <?php echo get_the_content();?> que sepa tocar  
+                                               <?php foreach (get_field('instrumento') as $instrumento) {
+                                           echo  $instrumento. ', ';
+                                            } ?> en 
+                                <?php               $categoria = pk_get_the_category(get_the_ID(),'categoria');
+                               $r = 1;
+                               foreach ($categoria as $category) {
+                                   if($r==1){
+                                   echo $category->name.', ';
+                                   $r++;
+                               }else{
+                                    echo $category->name;
+                               }
+                           }?>
+                                       </p>
+                                   </a>
                             </div>
                         </div>
                         <div class="clearfix"></div>

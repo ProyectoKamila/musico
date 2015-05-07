@@ -22,10 +22,27 @@
                             <option value="Masculino">23</option>
                             </select>
                         <label for="sexo"> Estado</label>
-                        <select name="sexo" id="" class="selector" >
-                                <option value="Femenino">Todos</option>
-                                <option value="Masculino">Valencia</option>
-                                <option value="Masculino">Valencia</option>
+                        <select name="estado" id="" class="selector" >
+                                <option value="todos">Todos</option>
+                                   <?php
+                                                    $args = array(
+                                                        'child_of' => 0,
+                                                        'parent' => '',
+                                                        'orderby' => 'name',
+                                                        'order' => 'ASC',
+                                                        'hide_empty' => 0,
+                                                        'hierarchical' => 0,
+                                                        'exclude' => '',
+                                                        'include' => '',
+                                                        'number' => '',
+                                                        'taxonomy' => 'categoria',
+                                                        'pad_counts' => false
+                                                    );
+                                                    ?>
+                                                    <?php $categories = get_categories($args); ?> 
+                                                    <?php foreach ($categories as $category) { ?>
+                                                        <option id="" value="<?php echo  $category->name; ?>"><?php echo  $category->name; ?></option>
+                                                    <?php }wp_reset_query(); ?>
                         </select>
                         <label for="sexo">Ciudad</label>
                         <select name="sexo" id="" class="selector" >
