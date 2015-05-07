@@ -25,6 +25,8 @@ include('library/imgurl.php');
 include('library/limited-caracter.php');
 
 include('library/custom.php');
+// categorias
+include('library/pk_get_the_category.php');
 
 
 
