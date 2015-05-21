@@ -23,29 +23,58 @@ get_header('');
     $x = the_post(); 
     
 ?>
-                              <?php
-                                //Gather comments for a specific page/post 
-                                $comments = get_comments(array(
-                                    'post_id'=>$post_id,
-                                    'status' => 'approve' //Change this to the type of comments to be displayed
-                                ));
-                               
-                                ?>
-                            <?php foreach ($comments as $comment){?>
                          
                              <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                                <div class="thumbnail">
-                                    <?php echo get_avatar($comment->comment_author_email); ?> 
+                               <div class="thumbnail">
+                                    <a href="<?php echo get_author_posts_url($post->post_author); ?>">
+                                        <?php
+                                        echo get_avatar(get_the_author_meta('user_email'));
+                                        ?> 
+                                    </a>
                                 </div>
                             </div>
-                            <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
+                           <div class="col-lg-11 col-md-11 col-sm-10 col-xs-10 col-xs-offset-1 col-lg-offset-0 col-md-offset-0 col-sm-offset-0">
                                 <div class="ads-text">
-                                    <a href="author/<?php echo get_comment_author_link(); ?>">  <p><?php echo $comment->comment_date;?> - <?php echo $comment->comment_content;?></p></a>
+                                    <a href="<?php the_permalink(); ?>">  
+                                        <p>
+                                            Publicado el <?php echo get_the_date('d M Y '); ?> - a las <?php echo get_the_date('H M'); ?>
+                                            <?php echo get_the_title(); ?> - <?php echo get_the_content(); ?> que sepa tocar  
+                                            <?php
+                                            foreach (get_field('instrumento') as $instrumento) {
+                                                echo $instrumento . ', ';
+                                            }
+                                            ?> en 
+                                            <?php
+                                            $categoria = pk_get_the_category(get_the_ID(), 'estado');
+                                            $r = 1;
+                                            foreach ($categoria as $category) {
+                                                if ($r == 1) {
+                                                    echo $category->name . ', ';
+                                                    $r++;
+                                                } else {
+                                                    echo $category->name;
+                                                }
+                                            }
+                                            ?>
+                                            <?php
+                                            $categoria = pk_get_the_category(get_the_ID(), 'ciudad');
+                                            $r = 1;
+                                            foreach ($categoria as $category) {
+                                                if ($r == 1) {
+                                                    echo $category->name . ', ';
+                                                    $r++;
+                                                } else {
+                                                    echo $category->name;
+                                                }
+                                            }
+                                            ?>
+                                        </p>
+                                    </a>
                                 </div>
                             </div>
                             <div class="clearfix"></div>
                     <?php } ?>
-<?php } ?>
+
 
                     </div>
                 </div>

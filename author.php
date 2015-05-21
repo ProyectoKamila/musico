@@ -8,7 +8,7 @@
                     <div class="title">
                         DATOS PERSONALES
                     </div> 
-                    <?php echo get_avatar($curauth->user_email, 200); ?> 
+                   <?php echo get_field('imagen_perfil', 'user_' . $curauth->ID); ?>
                     <h2><?php echo $curauth->nickname; ?></h2>
                     <h3><?php echo $curauth->first_name; ?> <?php echo $curauth->last_name; ?></h3>
                     <p><?php echo $curauth->user_description; ?> </p>
@@ -37,9 +37,7 @@
                     <p>Nivel: <?php echo get_field('nivel', 'user_' . $curauth->ID); ?></p>
                     <p><?php echo get_field('estado', 'user_' . $curauth->ID); ?></p>
                     <p><?php echo get_field('ciudad', 'user_' . $curauth->ID); ?></p>
-
-
-
+                    <p>Sexo:<?php echo get_field('sexo', 'user_' . $curauth->ID); ?></p>   
                 </div>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">

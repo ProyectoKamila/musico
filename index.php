@@ -35,8 +35,9 @@
                                             <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 styled-select">
                                                 
                                                 <select name="estado" id="estado" onchange="load_form(this.value);" required>
+                                                    
                                                     <?php
-                                                    $country_array = array("" => __('Pais', 'framework'));
+                                                    $country_array = array("" => __('Estado', 'framework'));
                                                     $country_posts = get_posts(array('post_type' => 'countries', 'posts_per_page' => -1, 'suppress_filters' => 0));
                                                     if (!empty($country_posts)) {
                                                         foreach ($country_posts as $country_post) {

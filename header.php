@@ -33,13 +33,29 @@
 					      BUSCO TOCADA 
 					    </a>
 					  </li>
+                                          <?php $user_ID = get_current_user_id(); ?>
+                                          <?php if($user_ID ==0 ){?>
                                               <li role="presentation" class="dropdown">
 					    <a class="dropdown-toggle" data-toggle="dropdown" href="http://wedomedia.net/musicodisponible/wp-login.php?action=register" role="button" aria-expanded="false">
 					      REGISTRARME
 					    </a>
 					  </li>
+                                                <li role="presentation" class="dropdown">
+					    <a class="dropdown-toggle" data-toggle="dropdown" href="http://wedomedia.net/musicodisponible/wp-login.php" role="button" aria-expanded="false">
+					      ACCEDER
+					    </a>
+					  </li>
+                                          <?php }else{?>
+                                                <li role="presentation" class="dropdown">
+					    <a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo get_author_posts_url($user_ID); ?>" role="button" aria-expanded="false">
+					      MI PERFIL
+					    </a>
+					  </li>
+                                          <?php }?>
 					</ul>
 				</section>
 			</div>
 		</section>
+            
+            
 	</header>
