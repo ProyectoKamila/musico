@@ -42,10 +42,6 @@ function theme_custom_types() {
     ));
 }
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 $current_user = wp_get_current_user();
     //debug($current_user->roles[0]); 
 //administrator
