@@ -89,3 +89,17 @@ function remove_menus1(){
         remove_submenu_page( 'index.php', 'update-core.php' );
 //        remove_submenu_page('update-core.php');
 }
+function pk_selected( $selected, $current = true, $echo = true ) {
+	return pk_checked_selected_helper( $selected, $current, $echo, 'selected' );
+}
+function pk_checked_selected_helper( $helper, $current, $echo, $type ) {
+	if ( (string) $helper === (string) $current )
+		$result = " $type='$type'";
+	else
+		$result = '';
+
+	if ( $echo )
+		$result;
+
+	return $result;
+}

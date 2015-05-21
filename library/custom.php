@@ -1,6 +1,6 @@
 <?php
 function custom_all($custom_name){
-query_posts(array('post_type' => 'acf', 'posts_per_page' => 10));
+query_posts(array('post_type' => 'acf', 'posts_per_page' => -1));
 while (have_posts()) {
     the_post();
     $meta = get_post_meta(get_the_ID());
@@ -32,7 +32,7 @@ while (have_posts()) {
 } 
 } 
 function custom_c($custom_name){
-query_posts(array('post_type' => 'acf', 'posts_per_page' => 10));
+query_posts(array('post_type' => 'acf', 'posts_per_page' => -1));
 while (have_posts()) {
     the_post();
     $meta = get_post_meta(get_the_ID());

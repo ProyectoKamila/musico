@@ -1,4 +1,4 @@
-<?php // custom_all('ciudad');      ?>
+<?php // custom_all('ciudad');           ?>
 <?php get_header(""); ?>
 <section class="">
     <div class="container">
@@ -33,9 +33,9 @@
 
                                             </div>
                                             <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 styled-select">
-                                                
+
                                                 <select name="estado" id="estado" onchange="load_form(this.value);" required="">
-                                                    
+
                                                     <?php
                                                     $country_array = array("" => __('Estado', 'framework'));
                                                     $country_posts = get_posts(array('post_type' => 'countries', 'posts_per_page' => -1, 'suppress_filters' => 0));
@@ -59,7 +59,7 @@
                                             </div>
 
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content-large">
-                                                <input id='text' type="text" name="false-search" id="false-search" class="col-lg-11 col-md-11 col-sm-10 col-xs-10 large-input" placeholder="Busqueda" required  onkeypress="return event.keyCode!=13">
+                                                <input id='text' type="text" name="false-search" id="false-search" class="col-lg-11 col-md-11 col-sm-10 col-xs-10 large-input" placeholder="Busqueda" required  onkeypress="return event.keyCode != 13">
                                                 <buttom type="buttom" class="col-lg-1 col-md-1 col-sm-2 col-xs-2 enviar" id="lupa"></buttom>
                                         </form>
                                         <form action="" id="fs">
@@ -105,8 +105,8 @@
                             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                                 <div class="thumbnail">
                                     <a href="<?php echo get_author_posts_url($post->post_author); ?>">
-                                       <img src="<?php echo get_field('imagen_perfil', 'user_' . get_the_author_meta('id')); ?>" alt="<?php echo $curauth->nickname; ?>"/>
-                                       
+                                        <img src="<?php echo get_field('imagen_perfil', 'user_' . get_the_author_meta('id')); ?>" alt="<?php echo $curauth->nickname; ?>"/>
+
                                     </a>
                                 </div>
                             </div>
@@ -118,34 +118,16 @@
                                             Publicado el <?php echo get_the_date('d M Y '); ?> - a las <?php echo get_the_date('H M'); ?>
                                             <?php echo get_the_title(); ?> - <?php echo get_the_content(); ?> que sepa tocar  
                                             <?php
-                                            foreach (get_field('instrumento') as $instrumento) {
-                                                echo $instrumento . ', ';
-                                            }
-                                            ?> en 
-                                            <?php
-                                            $categoria = pk_get_the_category(get_the_ID(), 'estado');
-                                            $r = 1;
-                                            foreach ($categoria as $category) {
-                                                if ($r == 1) {
-                                                    echo $category->name . ', ';
-                                                    $r++;
-                                                } else {
-                                                    echo $category->name;
+                                            if (get_field('instrumento')) {
+                                                foreach (get_field('instrumento') as $instrumento) {
+                                                    echo $instrumento . ', ';
                                                 }
                                             }
-                                            ?>
+                                            ?> en la ciudad de
                                             <?php
-                                            $categoria = pk_get_the_category(get_the_ID(), 'ciudad');
-                                            $r = 1;
-                                            foreach ($categoria as $category) {
-                                                if ($r == 1) {
-                                                    echo $category->name . ', ';
-                                                    $r++;
-                                                } else {
-                                                    echo $category->name;
-                                                }
-                                            }
+                                            logic_meta_box_cb1($post);
                                             ?>
+
                                         </p>
                                     </a>
                                 </div>
@@ -157,13 +139,11 @@
             </div>
         </div>
 </section>
-<?php
-
-?>
+<?php ?>
 <?php get_footer(""); ?>
 <script type="text/javascript" charset="utf-8">
-    $(document).ready(function() {
-        $('#estado').change(function() {
+    $(document).ready(function () {
+        $('#estado').change(function () {
 
 //            console.log($('#cursos'));
             $.ajax({
@@ -174,7 +154,7 @@
                 url: "<?php bloginfo('template_url'); ?>/procesar.php",
 //                data: "cursos=" + $('#cursos').val()+"&hfh="+,
                 data: "estado=" + $('#estado').val(),
-                success: function(data) {
+                success: function (data) {
 //                    cosole.log($('#cursos'));
                     $('#ciudad').html(data);
                 }
