@@ -27,47 +27,29 @@ get_header('');
                              <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                                <div class="thumbnail">
                                     <a href="<?php echo get_author_posts_url($post->post_author); ?>">
-                                        <?php
-                                        echo get_avatar(get_the_author_meta('user_email'));
-                                        ?> 
+                                        <img src="<?php echo get_field('imagen_perfil', 'user_' . get_the_author_meta('id')); ?>" alt="<?php echo $curauth->nickname; ?>"/>
+
                                     </a>
                                 </div>
                             </div>
                            <div class="col-lg-11 col-md-11 col-sm-10 col-xs-10 col-xs-offset-1 col-lg-offset-0 col-md-offset-0 col-sm-offset-0">
                                 <div class="ads-text">
                                     <a href="<?php the_permalink(); ?>">  
-                                        <p>
+                                     <p>
                                             Publicado el <?php echo get_the_date('d M Y '); ?> - a las <?php echo get_the_date('H M'); ?>
                                             <?php echo get_the_title(); ?> - <?php echo get_the_content(); ?> que sepa tocar  
                                             <?php
-                                            foreach (get_field('instrumento') as $instrumento) {
-                                                echo $instrumento . ', ';
-                                            }
-                                            ?> en 
-                                            <?php
-                                            $categoria = pk_get_the_category(get_the_ID(), 'estado');
-                                            $r = 1;
-                                            foreach ($categoria as $category) {
-                                                if ($r == 1) {
-                                                    echo $category->name . ', ';
-                                                    $r++;
-                                                } else {
-                                                    echo $category->name;
+                                            if (get_field('instrumento')) {
+                                                foreach (get_field('instrumento') as $instrumento) {
+                                                    echo $instrumento . ', ';
                                                 }
-                                            }
-                                            ?>
+                                            }wp_reset_query();   
+                                            ?> en la ciudad de
                                             <?php
-                                            $categoria = pk_get_the_category(get_the_ID(), 'ciudad');
-                                            $r = 1;
-                                            foreach ($categoria as $category) {
-                                                if ($r == 1) {
-                                                    echo $category->name . ', ';
-                                                    $r++;
-                                                } else {
-                                                    echo $category->name;
-                                                }
-                                            }
+                                            logic_meta_box_cb1($post);
+                                            wp_reset_query();   
                                             ?>
+
                                         </p>
                                     </a>
                                 </div>

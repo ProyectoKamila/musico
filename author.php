@@ -69,27 +69,22 @@
                         </div>
                         <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
                             <div class="ads-text">
-                                <a href="<?php the_permalink(); ?>">  <p>
-                                        Publicado el <?php echo get_the_date('d M Y '); ?> - a las <?php echo get_the_date('h'); ?>
-                                        <?php echo get_the_title(); ?> - <?php echo get_the_content(); ?> que sepa tocar  
-                                        <?php
-                                        foreach (get_field('instrumento') as $instrumento) {
-                                            echo $instrumento . ', ';
-                                        }
-                                        ?> en 
-                                        <?php
-                                        $categoria = pk_get_the_category(get_the_ID(), 'categoria');
-                                        $r = 1;
-                                        foreach ($categoria as $category) {
-                                            if ($r == 1) {
-                                                echo $category->name . ', ';
-                                                $r++;
-                                            } else {
-                                                echo $category->name;
+                                <a href="<?php the_permalink(); ?>"> 
+                                 <p>
+                                            Publicado el <?php echo get_the_date('d M Y '); ?> - a las <?php echo get_the_date('H M'); ?>
+                                            <?php echo get_the_title(); ?> - <?php echo get_the_content(); ?> que sepa tocar  
+                                            <?php
+                                            if (get_field('instrumento')) {
+                                                foreach (get_field('instrumento') as $instrumento) {
+                                                    echo $instrumento . ', ';
+                                                }
                                             }
-                                        }
-                                        ?>
-                                    </p>
+                                            ?> en la ciudad de
+                                            <?php
+                                            logic_meta_box_cb1($post);
+                                            ?>
+
+                                        </p>
                                 </a>
                             </div>
                         </div>
