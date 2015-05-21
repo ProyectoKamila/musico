@@ -25,7 +25,7 @@
 
                                             <div class="col-lg-offset-5 col-md-offset-5 col-lg-3 col-md-3 col-sm-4 col-xs-12 styled-select">
 
-                                                <select id="instrumento" onchange="load_form(this.value);" required>
+                                                <select id="instrumento" onchange="load_form(this.value);" required="">
                                                     <option>Instrumento</option>
                                                     <?php custom_all('instrumento'); ?>
 
@@ -34,7 +34,7 @@
                                             </div>
                                             <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 styled-select">
                                                 
-                                                <select name="estado" id="estado" onchange="load_form(this.value);" required>
+                                                <select name="estado" id="estado" onchange="load_form(this.value);" required="">
                                                     
                                                     <?php
                                                     $country_array = array("" => __('Estado', 'framework'));
@@ -47,7 +47,7 @@
                                                     ?>
 
                                                     <?php foreach ($country_array as $key => $val) { ?>
-                                                        <option value="<?php echo $key; ?>" <?php selected($selectedCountry[0], $key); ?>><?php echo $val; ?></option>
+                                                        <option value="<?php echo $val; ?>" <?php selected($selectedCountry[0], $key); ?>><?php echo $val; ?></option>
 
                                                     <?php } ?>
 
@@ -59,7 +59,7 @@
                                             </div>
 
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content-large">
-                                                <input id='text' type="text" name="false-search" id="false-search" class="col-lg-11 col-md-11 col-sm-10 col-xs-10 large-input" placeholder="Busqueda" required>
+                                                <input id='text' type="text" name="false-search" id="false-search" class="col-lg-11 col-md-11 col-sm-10 col-xs-10 large-input" placeholder="Busqueda" required  onkeypress="return event.keyCode!=13">
                                                 <buttom type="buttom" class="col-lg-1 col-md-1 col-sm-2 col-xs-2 enviar" id="lupa"></buttom>
                                         </form>
                                         <form action="" id="fs">
@@ -105,9 +105,8 @@
                             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                                 <div class="thumbnail">
                                     <a href="<?php echo get_author_posts_url($post->post_author); ?>">
-                                        <?php
-                                        echo get_avatar(get_the_author_meta('user_email'));
-                                        ?> 
+                                       <img src="<?php echo get_field('imagen_perfil', 'user_' . get_the_author_meta('id')); ?>" alt="<?php echo $curauth->nickname; ?>"/>
+                                       
                                     </a>
                                 </div>
                             </div>

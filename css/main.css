@@ -1,4 +1,279 @@
 /*
-CSS compiled from the file: http://localhost:8888/musicodisponible/wp-content/themes/musico/css/main.less
+CSS compiled from the file: http://localhost:8888/wordpress/musicodisponible/wp-content/themes/MusicoDisponible_wp/css/main.less
 */
-@import "http://localhost:8888/musicodisponible/wp-content/themes/musico/bootstrap/dist/css/bootstrap.css";@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700,400,300);html{height:100%;font-family:'Open Sans'}body{margin:0 auto;padding:0;height:100%}header{height:50px;background:rgba(0,0,0,.7);width:100%;position:relative;z-index:1}header .menu a{color:white;padding-top:16px}header .menu a:hover{text-decoration:none}header .menu li{background:none}header .nav>li>a:hover,header .nav>li>a:focus{background:none !important}.main{width:100%;background:url('http://localhost:8888/musicodisponible/wp-content/themes/musico/images/back.jpg') top center no-repeat;background-size:cover}.text-right{text-align:right;font-weight:200;font-size:18px;color:white;margin-bottom:15%;padding:10px}.search{width:100%;height:50%}.search .active{color:white !important}.search .search-type{height:50px;background:url(http://localhost:8888/musicodisponible/wp-content/themes/musico/images/gau.png) top center;text-align:center;line-height:50px;font-size:30px;margin-bottom:10px;color:#222121;text-shadow:1px 2px 5px #ccc;cursor:pointer;transition:1s all ease-in-out}.search .search-type span{text-align:right;margin-left:40px}.search .styled-select{height:34px;overflow:hidden;border-right:1px solid #fff;background:url(http://localhost:8888/musicodisponible/wp-content/themes/musico/images/fondo.png);margin-bottom:10px}.search .styled-select select{background:transparent;width:100%;padding:5px;font-size:16px;line-height:1;border:0;border-radius:0;height:100%;-webkit-appearance:none;outline:0}.search .no-borde{border-right:0 !important}.search .content-large{padding-left:0;padding-right:0;background:white;height:42px;margin-bottom:10px;border-radius:5px;margin-bottom:10%}.search .content-large .large-input{height:42px;border:0;border-right:1px solid #ccc;-webkit-appearance:none;background:none;text-indent:10px}.search .content-large .enviar{height:42px;border:0;-webkit-appearance:none;background:url(http://localhost:8888/musicodisponible/wp-content/themes/musico/images/lupa.png) center no-repeat;background-size:50%}.ads{width:100%;background:#fcf5f5}.ads .title h1{text-align:center}.ads .title h2{text-align:center;font-size:16px;font-weight:200}.ads .items .thumbnail{width:50px;height:50px;position:relative;background:black;overflow:hidden}.ads .items .thumbnail img{width:100%;height:100%}.ads .items .ads-text{padding-top:10px}.videos{padding-top:80px}.videos .item{position:relative;height:160px;width:100%;background:yellow;margin-bottom:10px;overflow:hidden}.videos .itemfirst-child{margin-top:100px;position:relative}.videos .item iframe{width:100%;height:100%}footer{width:100%;min-height:50px;margin-top:3%;background:rgba(0,0,0,.7)}footer p{text-align:center;color:white;font-size:16px}footer p a{color:white;text-decoration:none}footer p a:hover{color:white;text-decoration:none}.espaciado-top{margin-top:20%}.author{position:relative;clear:both;width:100%;background:#fcf5f5}.author .profile-dates{width:100%;position:relative}.author .profile-dates .title{width:100%;height:40px;text-align:center;background:#212121;margin-top:5px;line-height:40px;color:#fcf5f5}.author .profile-dates img{width:100%;height:220px}.logo{width:auto;max-width:200px;height:40px;margin-top:4px}
+@import "http://localhost:8888/wordpress/musicodisponible/wp-content/themes/MusicoDisponible_wp/bootstrap/dist/css/bootstrap.css";
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700,400,300);
+html {
+  height: 100%;
+  font-family: 'Open Sans';
+}
+body {
+  margin: 0 auto;
+  padding: 0px;
+  height: 100%;
+}
+header {
+  height: 50px;
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+header .menu a {
+  color: white;
+  padding-top: 16px;
+}
+header .menu a:hover {
+  text-decoration: none;
+}
+header .menu li {
+  background: none;
+}
+header .nav > li > a:hover,
+header .nav > li > a:focus {
+  background: none !important;
+}
+.main {
+  width: 100%;
+  background: url('http://localhost:8888/wordpress/musicodisponible/wp-content/themes/MusicoDisponible_wp/images/back.jpg') top center no-repeat;
+  background-size: cover;
+}
+.text-right {
+  text-align: right;
+  font-weight: 200;
+  font-size: 18px;
+  color: white;
+  margin-bottom: 15%;
+  padding: 10px;
+}
+.search {
+  width: 100%;
+  height: 50%;
+}
+.search .active {
+  color: white !important;
+}
+.search .search-type {
+  height: 50px;
+  background: url(http://localhost:8888/wordpress/musicodisponible/wp-content/themes/MusicoDisponible_wp/images/gau.png) top center;
+  text-align: center;
+  line-height: 50px;
+  font-size: 30px;
+  margin-bottom: 10px;
+  color: #222121;
+  text-shadow: 1px 2px 5px #ccc;
+  cursor: pointer;
+  transition: 1s all ease-in-out;
+}
+.search .search-type span {
+  text-align: right;
+  margin-left: 40px;
+}
+.search .styled-select {
+  height: 34px;
+  overflow: hidden;
+  border-right: 1px solid #fff;
+  background: url(http://localhost:8888/wordpress/musicodisponible/wp-content/themes/MusicoDisponible_wp/images/fondo.png);
+  margin-bottom: 10px;
+}
+.search .styled-select select {
+  background: transparent;
+  width: 100%;
+  padding: 5px;
+  font-size: 16px;
+  line-height: 1;
+  border: 0;
+  border-radius: 0;
+  height: 100%;
+  -webkit-appearance: none;
+  outline: none;
+}
+.search .no-borde {
+  border-right: 0px !important;
+}
+.search .content-large {
+  padding-left: 0px;
+  padding-right: 0px;
+  background: white;
+  height: 42px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  margin-bottom: 10%;
+}
+.search .content-large .large-input {
+  height: 42px;
+  border: none;
+  border-right: 1px solid #ccc;
+  -webkit-appearance: none;
+  background: none;
+  text-indent: 10px;
+}
+.search .content-large .enviar {
+  height: 42px;
+  border: none;
+  -webkit-appearance: none;
+  background: url(http://localhost:8888/wordpress/musicodisponible/wp-content/themes/MusicoDisponible_wp/images/lupa.png) center no-repeat;
+  background-size: 50%;
+}
+.ads {
+  width: 100%;
+  background: #fcf5f5;
+}
+.ads .title h1 {
+  text-align: center;
+}
+.ads .title h2 {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 200;
+}
+.ads .items .thumbnail {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  background: black;
+  overflow: hidden;
+}
+.ads .items .thumbnail img {
+  width: 100%;
+  height: 100%;
+}
+.ads .items .ads-text {
+  padding-top: 10px;
+}
+.videos {
+  padding-top: 80px;
+}
+.videos .item {
+  position: relative;
+  height: 160px;
+  width: 100%;
+  background: yellow;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.videos .itemfirst-child {
+  margin-top: 100px;
+  position: relative;
+}
+.videos .item iframe {
+  width: 100%;
+  height: 100%;
+}
+footer {
+  width: 100%;
+  min-height: 50px;
+  margin-top: 3%;
+  background: rgba(0, 0, 0, 0.7);
+}
+footer p {
+  text-align: center;
+  color: white;
+  font-size: 16px;
+}
+footer p a {
+  color: white;
+  text-decoration: none;
+}
+footer p a:hover {
+  color: white;
+  text-decoration: none;
+}
+.espaciado-top {
+  margin-top: 20%;
+}
+.author {
+  position: relative;
+  clear: both;
+  width: 100%;
+  background: #fcf5f5;
+}
+.author .profile-dates {
+  width: 100%;
+  position: relative;
+}
+.author .profile-dates .title {
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  background: #212121;
+  margin-top: 5px;
+  line-height: 40px;
+  color: #fcf5f5;
+}
+.author .profile-dates img {
+  width: 100%;
+  height: 220px;
+}
+.logo {
+  width: auto;
+  max-width: 200px;
+  height: 40px;
+  margin-top: 4px;
+}
+.box-search {
+  width: 100%;
+  background: #ccc;
+  margin-top: 40px;
+}
+.box-search .title {
+  width: 100%;
+  height: 40px;
+  background: #212121;
+  text-align: center;
+  color: white;
+  line-height: 40px;
+  font-weight: 200;
+}
+.box-search .filtrador {
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+.box-search .filtrador label {
+  text-align: center;
+  display: block;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.box-search .filtrador .selector {
+  width: 100%;
+  height: 35px;
+  display: block;
+  -webkit-appearance: none;
+  margin-bottom: 5px;
+  color: black;
+  text-indent: 10px;
+}
+.box-search .filtrador .medio {
+  width: 42%;
+  margin-right: 6%;
+  display: inline-block;
+}
+.box-search .filtrador .btn-send {
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  top: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background: #212121;
+  color: #fcf5f5;
+}
+.my-videos {
+  overflow: hidden;
+}
+.my-videos h2 {
+  font-size: 18px;
+}
+.my-videos p {
+  overflow: hidden;
+}
+.my-videos iframe {
+  max-width: 300px !important;
+  height: 200px !important;
+}

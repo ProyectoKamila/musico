@@ -18,7 +18,9 @@
 
                             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                                 <div class="thumbnail">
-                                    <?php echo get_avatar($comment->comment_author_email); ?> 
+                                    <a href="<?php echo get_author_posts_url($post->post_author); ?>">
+                                       <img src="<?php echo get_field('imagen_perfil', 'user_' . get_the_author_meta('id')); ?>" alt="<?php echo $curauth->nickname; ?>"/>
+                                    </a>
                                 </div>
                             </div>
                             <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
@@ -58,9 +60,12 @@
 //                            debug(get_the_ID());
                             ?>
                             <?php foreach ($comments as $comment) { ?>
+                                 <?php  //debug($comment,false);?>
                                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                                     <div class="thumbnail">
-                                        <?php echo get_avatar($comment->comment_author_email); ?> 
+                                        <a href="<?php echo get_author_posts_url( $comment->user_id); ?>">
+                                       <img src="<?php echo get_field('imagen_perfil', 'user_' . $comment->user_id); ?>" alt="<?php echo $curauth->nickname; ?>"/>
+                                    </a>
                                     </div>
                                 </div>
                                 <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">

@@ -7,42 +7,33 @@
                         <label for="sexo"> Hombre / Mujeres</label>
                         <select name="sexo" id="" class="selector">
                             <option value="ambos">Ambos</option>
-                            <option value="Femenino">Femenino</option>
-                            <option value="Masculino">Masculino</option>
+                            <?php custom_all('sexo'); ?>
                         </select>
                         <label for="sexo"> Edad</label>
                         <select name="sexo" id="" class="selector medio">
                             <option value="todos">desde</option>
-                            <option value="Femenino">18</option>
-                            <option value="Masculino">19</option>
+                            <?php custom_all('edad'); ?>
                         </select>
                             <select name="sexo" id="" class="selector medio">
                             <option value="ambos">Hasta</option>
-                            <option value="Femenino">21</option>
-                            <option value="Masculino">23</option>
+                            <?php custom_all('edad'); ?>
                             </select>
                         <label for="sexo"> Estado</label>
                         <select name="estado" id="" class="selector" >
-                                <option value="todos">Todos</option>
-                                   <?php
-                                                    $args = array(
-                                                        'child_of' => 0,
-                                                        'parent' => '',
-                                                        'orderby' => 'name',
-                                                        'order' => 'ASC',
-                                                        'hide_empty' => 0,
-                                                        'hierarchical' => 0,
-                                                        'exclude' => '',
-                                                        'include' => '',
-                                                        'number' => '',
-                                                        'taxonomy' => 'categoria',
-                                                        'pad_counts' => false
-                                                    );
+                                <?php
+                                                    $country_array = array("" => __('Estado', 'framework'));
+                                                    $country_posts = get_posts(array('post_type' => 'countries', 'posts_per_page' => -1, 'suppress_filters' => 0));
+                                                    if (!empty($country_posts)) {
+                                                        foreach ($country_posts as $country_post) {
+                                                            $country_array[$country_post->ID] = $country_post->post_title;
+                                                        }
+                                                    }
                                                     ?>
-                                                    <?php $categories = get_categories($args); ?> 
-                                                    <?php foreach ($categories as $category) { ?>
-                                                        <option id="" value="<?php echo  $category->name; ?>"><?php echo  $category->name; ?></option>
-                                                    <?php }wp_reset_query(); ?>
+
+                                                    <?php foreach ($country_array as $key => $val) { ?>
+                                                        <option value="<?php echo $val; ?>" <?php selected($selectedCountry[0], $key); ?>><?php echo $val; ?></option>
+
+                                                    <?php } ?> 
                         </select>
                         <label for="sexo">Ciudad</label>
                         <select name="sexo" id="" class="selector" >

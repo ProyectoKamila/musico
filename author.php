@@ -8,7 +8,7 @@
                     <div class="title">
                         DATOS PERSONALES
                     </div> 
-                   <?php echo get_field('imagen_perfil', 'user_' . $curauth->ID); ?>
+                   <img src="<?php echo get_field('imagen_perfil', 'user_' . $curauth->ID); ?>" alt="<?php echo $curauth->nickname; ?>"/>
                     <h2><?php echo $curauth->nickname; ?></h2>
                     <h3><?php echo $curauth->first_name; ?> <?php echo $curauth->last_name; ?></h3>
                     <p><?php echo $curauth->user_description; ?> </p>
@@ -34,19 +34,37 @@
 //                                echo get_field('instrumento', 'user_'. $curauth->ID ); 
                         ?>
                     </p>
-                    <p>Nivel: <?php echo get_field('nivel', 'user_' . $curauth->ID); ?></p>
+                    <p>Nivel:                    
+                    <?php
+                        $nivel = get_field('nivel_musico', 'user_' . $curauth->ID);
+                        if ($nivel != false) {
+                            $r = 1;
+                            foreach ($nivel as $j) {
+//                                        debug($i);
+                                if ($r != 1) {
+                                    echo ', ';
+                                }
+                                echo $j;
+                                $r++;
+                            }
+                        }else{
+                        ?>
+                        No he seleccionado nivel
+                        <?php } ?>
+                    </p>
                     <p><?php echo get_field('estado', 'user_' . $curauth->ID); ?></p>
                     <p><?php echo get_field('ciudad', 'user_' . $curauth->ID); ?></p>
                     <p>Sexo:<?php echo get_field('sexo', 'user_' . $curauth->ID); ?></p>   
+                    <p>Edad:<?php echo get_field('edad', 'user_' . $curauth->ID); ?></p>   
                 </div>
             </div>
-            <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <h3 class="">Anuncios</h3>
-                <?php query_posts(array('post_type' => 'anuncios', 'author' => $curauth->nickname)) ?>
+                <?php query_posts(array('post_type' => 'anuncios', 'author' => $curauth->ID)) ?>
                 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                             <div class="thumbnail">
-                                <?php echo get_avatar($comment->comment_author_email); ?> 
+                                <img src="<?php echo get_field('imagen_perfil', 'user_' . get_the_author_meta('id')); ?>" alt="<?php echo $curauth->nickname; ?>"/>
                             </div>
                         </div>
                         <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
@@ -79,11 +97,16 @@
     <?php endwhile;
 else:
     ?>
-                    <p><?php _e('No posts by this author.'); ?></p>
+                    <p><?php _e('Lo siento no he publicado nada.'); ?></p>
 <?php endif; ?>
             </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 my-videos">
+                <h2> Mis Videos</h2>
+                <div><?php echo get_field('video_1', 'user_' . $curauth->ID); ?></div>
+                <div><?php echo get_field('video_2', 'user_' . $curauth->ID); ?></div>
+                <div><?php echo get_field('video_3', 'user_' . $curauth->ID); ?></div>
+            </div> 
         </div>
     </div>
-
 </section>
 <?php get_footer(); ?>
