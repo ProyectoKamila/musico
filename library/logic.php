@@ -61,26 +61,26 @@ function logic_meta_box_cb($post){
 }
 
 add_action( 'save_post', 'city_meta_box_save' );
-//function city_meta_box_save( $post_id )
-//{
-//    // Bail if we're doing an auto save
-//    if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
-//     
-//    // if our nonce isn't there, or we can't verify it, bail
-//    if( !isset( $_POST['meta_box_nonce'] ) || !wp_verify_nonce( $_POST['meta_box_nonce'], 'city_meta_box_nonce' ) ) return;
-//     
-//    // if our current user can't edit this post, bail
-//    //if( !current_user_can( 'edit_post' ) ) return;
-//	
-//	// now we can actually save the data
-//    $allowed = array(
-//        'a' => array( // on allow a tags
-//            'href' => array() // and those anchors can only have href attribute
-//        )
-//    );
-//    // Make sure your data is set before trying to save it
-//     if( isset( $_POST['city_meta_box_country'] ) )
-//        update_post_meta( $post_id, 'city_meta_box_country',  $_POST['city_meta_box_country'] );
-//	if( isset( $_POST['city_meta_box_state'] ) )
-//        update_post_meta( $post_id, 'city_meta_box_state',  $_POST['city_meta_box_state'] );	
-//}
+function city_meta_box_save( $post_id )
+{
+    // Bail if we're doing an auto save
+    if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+     
+    // if our nonce isn't there, or we can't verify it, bail
+    if( !isset( $_POST['meta_box_nonce'] ) || !wp_verify_nonce( $_POST['meta_box_nonce'], 'city_meta_box_nonce' ) ) return;
+     
+    // if our current user can't edit this post, bail
+    //if( !current_user_can( 'edit_post' ) ) return;
+	
+	// now we can actually save the data
+    $allowed = array(
+        'a' => array( // on allow a tags
+            'href' => array() // and those anchors can only have href attribute
+        )
+    );
+    // Make sure your data is set before trying to save it
+     if( isset( $_POST['city_meta_box_country'] ) )
+        update_post_meta( $post_id, 'city_meta_box_country',  $_POST['city_meta_box_country'] );
+	if( isset( $_POST['city_meta_box_state'] ) )
+        update_post_meta( $post_id, 'city_meta_box_state',  $_POST['city_meta_box_state'] );	
+}
