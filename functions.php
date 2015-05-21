@@ -57,13 +57,24 @@ add_custom_taxonomy(array(
 ));
 
 $current_user = wp_get_current_user();
-//    debug($current_user->roles[0]);
-if ($current_user->roles[0] == 'subscriber') {
+//    debug($current_user->roles[0]); 
+//administrator
 
+add_role( 'admin', 'Administrador de p&aacute;gina', 
+        array(
+        'read'         => true,  // true allows this capability
+        'edit_posts'   => true,
+        'delete_posts' => false, // Use false to explicitly deny
+    )
+        );
+
+//remove_role( 'admin' );
     function remove_menus() {
+        if ($current_user->roles[0] == 'subscriber') {
         remove_menu_page('index.php');                  //Dashboard
         remove_menu_page('edit.php');                   //Posts
-//  remove_menu_page( 'edit.php?post_type=anuncios' );                   //Posts
+  //remove_menu_page( 'edit.php?post_type=countries' );                   //Posts
+  //remove_menu_page( 'edit.php?post_type=cities' );                   //Posts
         remove_menu_page('upload.php');                 //Media
         remove_menu_page('edit.php?post_type=page');    //Pages
         remove_menu_page('edit-comments.php');          //Comments
@@ -72,7 +83,14 @@ if ($current_user->roles[0] == 'subscriber') {
         remove_menu_page('users.php');                  //Users
         remove_menu_page('tools.php');                  //Tools
         remove_menu_page('options-general.php');        //Settings
-    }
-
+        
+        }else {
+        remove_menu_page('plugins.php');                //Plugins
+        remove_menu_page('options-general.php');
+        remove_menu_page('tools.php');
+        //remove_menu_page('admin.php?page=bws_plugins');
+   
+    
+        }
     add_action('admin_menu', 'remove_menus');
 }

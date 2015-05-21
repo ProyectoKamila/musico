@@ -1,4 +1,4 @@
-<?php // custom_all('ciudad');  ?>
+<?php // custom_all('ciudad');      ?>
 <?php get_header(""); ?>
 <section class="">
     <div class="container">
@@ -33,58 +33,26 @@
 
                                             </div>
                                             <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 styled-select">
-
+                                                
                                                 <select name="estado" id="estado" onchange="load_form(this.value);" required>
-                                                    <option>Estado</option>
                                                     <?php
-                                                    $args = array(
-                                                        'child_of' => 0,
-                                                        'parent' => '',
-                                                        'orderby' => 'name',
-                                                        'order' => 'ASC',
-                                                        'hide_empty' => 0,
-                                                        'hierarchical' => 1,
-                                                        'exclude' => '',
-                                                        'include' => '',
-                                                        'number' => '',
-                                                        'taxonomy' => 'categoria',
-                                                        'pad_counts' => false
-                                                    );
+                                                    $country_array = array("" => __('Pais', 'framework'));
+                                                    $country_posts = get_posts(array('post_type' => 'countries', 'posts_per_page' => -1, 'suppress_filters' => 0));
+                                                    if (!empty($country_posts)) {
+                                                        foreach ($country_posts as $country_post) {
+                                                            $country_array[$country_post->ID] = $country_post->post_title;
+                                                        }
+                                                    }
                                                     ?>
-                                                    <?php $categories = get_categories($args); ?> 
-                                                    <?php foreach ($categories as $category) { ?>
-                                                        <option id="rpr_state-alabama" value="Alabama"><?php echo $category->name; ?></option>
+                                                    <?php foreach ($country_array as $key => $val) { ?>
+                                                        <option value="<?php echo $key; ?>" <?php selected($selectedCountry[0], $key); ?>><?php echo $val; ?></option>
                                                     <?php } ?>
 
                                                 </select>
 
                                             </div>
                                             <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 styled-select no-borde">
-
-                                                <select id="ciudad" onchange="load_form(this.value);" required>
-                                                    <option>Ciudad</option>
-                                                    <?php
-                                                    $sargs = array(
-                                                        'child_of' => '',
-                                                        'parent' => 4,
-                                                        'orderby' => 'name',
-                                                        'order' => 'ASC',
-                                                        'hide_empty' => 0,
-                                                        'hierarchical' => 4,
-                                                        'exclude' => '',
-                                                        'include' => '',
-                                                        'number' => '',
-                                                        'taxonomy' => 'categoria',
-                                                        'pad_counts' => false
-                                                    );
-                                                    ?>
-                                                    <?php $subcategories = get_categories($sargs); ?> 
-                                                    <?php foreach ($subcategories as $subcategory) { ?>
-                                                        <option id="" value=""><?php echo $subcategory->name; ?></option>
-                                                    <?php }  wp_reset_query();?>
-
-                                                </select>
-
+                                                <select id="ciudad" required></select>
                                             </div>
 
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content-large">
@@ -133,11 +101,14 @@
                             ?>
                             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                                 <div class="thumbnail">
-                                    <?php
-                                    echo get_avatar(get_the_author_meta('user_email'));
-                                    ?> 
+                                    <a href="<?php echo get_author_posts_url($post->post_author); ?>">
+                                        <?php
+                                        echo get_avatar(get_the_author_meta('user_email'));
+                                        ?> 
+                                    </a>
                                 </div>
                             </div>
+
                             <div class="col-lg-11 col-md-11 col-sm-10 col-xs-10 col-xs-offset-1 col-lg-offset-0 col-md-offset-0 col-sm-offset-0">
                                 <div class="ads-text">
                                     <a href="<?php the_permalink(); ?>">  
@@ -178,10 +149,34 @@
                                 </div>
                             </div>
                             <div class="clearfix"></div>
-<?php } ?>
+                        <?php } ?>
                     </div>  
                 </div>
             </div>
         </div>
 </section>
+<?php
+
+?>
 <?php get_footer(""); ?>
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+        $('#estado').change(function() {
+
+//            console.log($('#cursos'));
+            $.ajax({
+                async: true,
+                type: "POST",
+                dataType: "html",
+                contentType: "application/x-www-form-urlencoded",
+                url: "<?php bloginfo('template_url'); ?>/procesar.php",
+//                data: "cursos=" + $('#cursos').val()+"&hfh="+,
+                data: "estado=" + $('#estado').val(),
+                success: function(data) {
+//                    cosole.log($('#cursos'));
+                    $('#ciudad').html(data);
+                }
+            });
+        });
+    });
+</script>
