@@ -25,6 +25,7 @@ include('library/imgurl.php');
 include('library/limited-caracter.php');
 
 include('library/custom.php');
+include('library/logic.php');
 // categorias
 include('library/pk_get_the_category.php');
 
@@ -41,21 +42,6 @@ function theme_custom_types() {
     ));
 }
 
-add_custom_taxonomy(array(
-    'name' => 'estado',
-    'singular' => 'estado',
-    'genero' => 'f',
-    'post_type' => 'anuncios',
-    'hierarchical' => true
-));
-add_custom_taxonomy(array(
-    'name' => 'ciudad',
-    'singular' => 'ciudad',
-    'genero' => 'f',
-    'post_type' => 'anuncios',
-    'hierarchical' => true
-));
-
 $current_user = wp_get_current_user();
     //debug($current_user->roles[0]); 
 //administrator
@@ -70,10 +56,10 @@ add_role( 'admin', 'Administrador de p&aacute;gina',
 
 //remove_role( 'admin' );
 if($current_user->roles[0] == 'subscriber'){
-      add_action( 'admin_menu', 'remove_menus' );
+      //add_action( 'admin_menu', 'remove_menus' );
   }
 if($current_user->roles[0] == 'admin'){
-      add_action( 'admin_menu', 'remove_menus1' );
+     // add_action( 'admin_menu', 'remove_menus1' );
   }
 
 function remove_menus(){
