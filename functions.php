@@ -96,9 +96,10 @@ function remove_menus(){
 
 function remove_menus1(){
     //remove_menu_page('plugins.php');                //Plugins
-//        remove_menu_page('options-general.php');
-//        remove_menu_page('tools.php');
-//        remove_menu_page('admin.php?page=bws_plugins');
-//        remove_menu_page('update-core.php');
+        remove_menu_page('options-general.php');
+        remove_menu_page('tools.php');
+        remove_menu_page('admin.php?page=bws_plugins');
+        remove_menu_page('update-core.php');
         remove_submenu_page( 'index.php', 'update-core.php' );
+//        remove_submenu_page('update-core.php');
 }

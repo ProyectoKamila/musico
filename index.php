@@ -44,10 +44,10 @@
                                                         }
                                                     }
                                                     ?>
-                                                    <?php foreach ($country_array as $key => $val) { 
-                                                        
-                                                        //debug($val,false);?>
-                                                        <option value="<?php echo $val; ?>" <?php selected($selectedCountry[0], $key); ?>><?php echo $val; ?></option>
+
+                                                    <?php foreach ($country_array as $key => $val) { ?>
+                                                        <option value="<?php echo $key; ?>" <?php selected($selectedCountry[0], $key); ?>><?php echo $val; ?></option>
+
                                                     <?php } ?>
 
                                                 </select>

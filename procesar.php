@@ -6,13 +6,13 @@ $state_array = array("" => $ciudad);
 if ($_POST['estado']) {
     $state_posts = $_POST['estado'];
     function Conectarse() {
-        //if (!($link = mysql_connect("localhost", DB_USER, DB_PASSWORD))) {
-    if (!($link = mysql_connect("mysql.wedomedia.net", 'kami', '8caracteres'))) {
+        if (!($link = mysql_connect("localhost", DB_USER, DB_PASSWORD))) {
+    //if (!($link = mysql_connect("mysql.wedomedia.net", 'kami', '8caracteres'))) {
         echo "Error conectando a la base de datos.";
         exit();
     }
-    //if (!mysql_select_db(DB_NAME, $link)) {
-    if (!mysql_select_db('wedokami', $link)) {
+    if (!mysql_select_db(DB_NAME, $link)) {
+    //if (!mysql_select_db('wedokami', $link)) {
         echo "Error seleccionando la base de datos.";
         exit();
     }
