@@ -24,8 +24,8 @@
 					    </a>
 					  </li>
                                           <li role="presentation" class="dropdown">
-					    <a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo home_url("busco-musico");?>" role="button" aria-expanded="false">
-					      BUSCO MUSICO 
+					    <a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo home_url("perfiles");?>" role="button" aria-expanded="false">
+					     PERFILES
 					    </a>
 					  </li>
                                             <li role="presentation" class="dropdown">

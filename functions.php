@@ -37,7 +37,7 @@ show_admin_bar(false);
 function theme_custom_types() {
     add_custom_post_type(array(
         'type' => 'Anuncios',
-        'supports'=>array('comments', 'editor', 'author'),
+        'supports'=>array('comments', 'editor', 'author','title '),
         'singular' => 'anuncio'
     ));
 }
