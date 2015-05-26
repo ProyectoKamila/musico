@@ -13,19 +13,20 @@
                             <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-xs-12">
                                 <div class="container-fluid">
                                     <div class="row">
-                                        <form>
-                                            <div id="musico" class="col-lg-6 col-md-6 col-sm-6 col-xs-12 search-type " onclick='load_form(id);'>
+                                        <form action="<?php echo home_url('/search-ad'); ?>" method="post">
+                                            <input type="hidden" name="simple" value="true"/>
+                                            <div id="musico" class="col-lg-6 col-md-6 col-sm-6 col-xs-12 search-type ">
                                                 MUSICO
                                                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                                             </div>
-                                            <div id="tocada" class="col-lg-6 col-md-6 col-sm-6 col-xs-12 search-type" onclick='load_form(id);'>
+                                            <div id="tocada" class="col-lg-6 col-md-6 col-sm-6 col-xs-12 search-type">
                                                 TOCADA
                                                 <span class="glyphicon glyphicon-music" aria-hidden="true"></span>
                                             </div>
 
                                             <div class="col-lg-offset-5 col-md-offset-5 col-lg-3 col-md-3 col-sm-4 col-xs-12 styled-select">
 
-                                                <select id="instrumento" onchange="load_form(this.value);" required="">
+                                                <select id="instrumento" name="instrumento" required="">
                                                     <option>Instrumento</option>
                                                     <?php custom_all('instrumento'); ?>
 
@@ -34,7 +35,7 @@
                                             </div>
                                             <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 styled-select">
 
-                                                <select name="estado" id="estado" onchange="load_form(this.value);" required="">
+                                                <select name="estado" id="estado" required="">
 
                                                     <?php
                                                     $country_array = array("" => __('Estado', 'framework'));
@@ -47,7 +48,7 @@
                                                     ?>
 
                                                     <?php foreach ($country_array as $key => $val) { ?>
-                                                        <option value="<?php echo $val; ?>" <?php selected($selectedCountry[0], $key); ?>><?php echo $val; ?></option>
+                                                        <option value="<?php echo $key; ?>" <?php selected($selectedCountry[0], $key); ?>><?php echo $val; ?></option>
 
                                                     <?php } ?>
 
@@ -55,16 +56,13 @@
 
                                             </div>
                                             <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 styled-select no-borde">
-                                                <select id="ciudad" required></select>
+                                                <select id="ciudad" name="ciudad" required></select>
                                             </div>
 
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content-large">
-                                                <input id='text' type="text" name="false-search" id="false-search" class="col-lg-11 col-md-11 col-sm-10 col-xs-10 large-input" placeholder="Busqueda" required  onkeypress="return event.keyCode != 13">
-                                                <buttom type="buttom" class="col-lg-1 col-md-1 col-sm-2 col-xs-2 enviar" id="lupa"></buttom>
-                                        </form>
-                                        <form action="" id="fs">
-                                            <input type="text" id="s" name="s" style="display:none" required>
-                                            <input type="submit" class="col-lg-1 col-md-1 col-sm-2 col-xs-2 enviar hidden-xs hidden-sm hidden-md hidden-lg" onclick="load_form();">
+                                                <input id='text' type="text" name="false-search" id="false-search" class="col-lg-11 col-md-11 col-sm-10 col-xs-10 large-input" placeholder="Busqueda" required>
+                                                <!--<buttom type="buttom" class="col-lg-1 col-md-1 col-sm-2 col-xs-2 enviar" id="lupa"></buttom>-->
+                                                <input type="submit" class="col-lg-1 col-md-1 col-sm-2 col-xs-2 enviar" value=""/>
                                         </form>
 
 

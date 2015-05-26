@@ -25,21 +25,21 @@
 
 
         }
-        $('#lupa').click(function () {
-            element = document.getElementById('instrumento');
-            element = element.value;
-            element1 = document.getElementById('estado');
-            element1 = element1.value;
-            element2 = document.getElementById('ciudad');
-            element2 = element2.value;
-            element3 = document.getElementById('text');
-            element3 = element3.value;
-
-            var s = element + " " + element1 + " " + element2 + " " + element3;
-            console.log(s);
-            $('#s').attr('value', s);
-            $('#fs').submit();
-        });
+//        $('#lupa').click(function () {
+//            element = document.getElementById('instrumento');
+//            element = element.value;
+//            element1 = document.getElementById('estado');
+//            element1 = element1.value;
+//            element2 = document.getElementById('ciudad');
+//            element2 = element2.value;
+//            element3 = document.getElementById('text');
+//            element3 = element3.value;
+//
+//            var s = element + " " + element1 + " " + element2 + " " + element3;
+//            console.log(s);
+//            $('#s').attr('value', s);
+//            $('#fs').submit();
+//        });
     </script>
 </footer>
 </section>

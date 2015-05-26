@@ -3,23 +3,33 @@
                        <div class="title">
                             BUSCADOR
                         </div> 
-                    <form action="" class="filtrador">
+                    <form action="<?php echo home_url('/search-ad'); ?>" method="post" class="filtrador">
+                        <input type="hidden" name="all" value="true"/>
                         <label for="sexo"> Hombre / Mujeres</label>
                         <select name="sexo" id="" class="selector">
                             <option value="ambos">Ambos</option>
-                            <?php custom_all('sexo'); ?>
+                            <option value="m">Masculino</option>
+                            <option value="f">Femenino</option>
                         </select>
                         <label for="sexo"> Edad</label>
-                        <select name="sexo" id="" class="selector medio">
-                            <option value="todos">desde</option>
-                            <?php custom_all('edad'); ?>
+                        <select name="desde" id="" class="selector medio">
+                            <option value="desde">Desde</option>
+                            <!--<option value="all">Todos</option>-->
+                            <?php // custom_all('edad'); ?>
+                            <?php for($i=18; $i<=50; $i++){ ?>
+                            <option value="<?= $i;?>"><?= $i;?></option>
+                            <?php } ?>
                         </select>
-                            <select name="sexo" id="" class="selector medio">
-                            <option value="ambos">Hasta</option>
-                            <?php custom_all('edad'); ?>
+                            <select name="hasta" id="" class="selector medio">
+                            <option value="hasta">Hasta</option>
+                            <?php // custom_all('edad'); ?>
+                            <?php // custom_all('edad'); ?>
+                            <?php for($i=18; $i<=50; $i++){ ?>
+                            <option value="<?= $i;?>"><?= $i;?></option>
+                            <?php } ?>
                             </select>
                         <label for="sexo"> Estado</label>
-                        <select name="estado" id="" class="selector" >
+                        <select name="estado" id="estado1" class="selector" >
                                 <?php
                                                     $country_array = array("" => __('Estado', 'framework'));
                                                     $country_posts = get_posts(array('post_type' => 'countries', 'posts_per_page' => -1, 'suppress_filters' => 0));
@@ -31,35 +41,41 @@
                                                     ?>
 
                                                     <?php foreach ($country_array as $key => $val) { ?>
-                                                        <option value="<?php echo $val; ?>" <?php selected($selectedCountry[0], $key); ?>><?php echo $val; ?></option>
+                                                        <option value="<?php echo $key; ?>" <?php selected($selectedCountry[0], $key); ?>><?php echo $val; ?></option>
 
                                                     <?php } ?> 
                         </select>
                         <label for="sexo">Ciudad</label>
-                        <select name="sexo" id="" class="selector" >
+                        <select id="ciudad1" name="ciudad" class="selector" required>
+                            <option>Seleccione un estado</option>
+                        </select>
+<!--                        <select name="sexo" id="" class="selector" >
                                 <option value="Femenino">Todos</option>
                                 <option value="Masculino">Valencia</option>
                                 <option value="Masculino">Valencia</option>
-                        </select>
+                        </select>-->
                        <label for="sexo">Que sepa tocar</label>
-                        <select name="sexo" id="" class="selector" >
+                        <select name="intrumento" id="" class="selector" >
                                 <option value="Femenino">Todos</option>
                                 <option value="Masculino">Guitarra</option>
                                 <option value="Masculino">Maraca</option>
                         </select>
                        <label for="sexo">Nivel</label>
-                        <select name="sexo" id="" class="selector" >
-                                <option value="Femenino">Todos</option>
+                        <select name="nivel" id="" class="selector" >
+                            <?php custom_all('nivel_musico'); ?>
+<!--                                <option value="Femenino">Todos</option>
                                 <option value="Masculino">bueno</option>
-                                <option value="Masculino">Intermedio</option>
+                                <option value="Masculino">Intermedio</option>-->
                         </select>
-                       <label for="sexo">Estilo</label>
+                       <label for="estilo">Estilo</label>
                         <select name="sexo" id="" class="selector" >
-                                <option value="Femenino">Todos</option>
+                            <?php custom_all('stilo'); ?>
+<!--                                <option value="Femenino">Todos</option>
                                 <option value="Masculino">Perron</option>
-                                <option value="Masculino">Intermedio</option>
+                                <option value="Masculino">Intermedio</option>-->
                         </select>
                        <input type="submit" class="btn btn-default btn-send" value="BUSCAR">
                     </form>
                 </div>
             </div>
+<?php wp_reset_query(); ?>

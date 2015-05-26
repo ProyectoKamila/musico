@@ -23,7 +23,7 @@ while (have_posts()) {
                 foreach ($field['choices'] as $choices) {
 //                    debug($choices,false);
 //                    echo $choices.'<br>';
-                    echo '<option id="rpr_state-alabama" value="'.$choices.'">'.$choices.'</option>';
+                    echo '<option value="'.$choices.'">'.$choices.'</option>';
                 }
         }
     }
