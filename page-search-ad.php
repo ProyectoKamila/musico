@@ -92,11 +92,59 @@ if($error){
     echo $error;
 }
 }elseif($_POST['all']){                               /////////////////////////////////////////fin simple ///////////////////////////////////////
-//    debug($_POST,false);
-    query_posts(array('post_type' => 'anuncios', 'posts_per_page' => -1));
-                        while (have_posts()) {
-                            the_post();
-//                            debug($post->ID,false);
+    debug($_POST,false);
+    
+    if(isset($_POST['sexo'])){
+        if($_POST['sexo']=='m'){
+            $sexo = 'hombre';
+        }elseif($_POST['sexo']=='f'){
+            $sexo = 'mujer';
+        }else{
+            $sexo = 'ambos';
+        }
+    }
+    if(isset($_POST['desde'])){
+        $desde = $_POST['desde'];
+    }else{
+        $desde = 19;
+    }
+    if(isset($_POST['hasta'])){
+        $hasta = $_POST['hasta'];
+    }else{
+        $hasta = 50;
+    }
+    
+    
+    //query_posts(array('post_type' => 'anuncios', 'posts_per_page' => -1));
+                        //while (have_posts()) {
+                            //the_post();
+    $users = $wpdb->get_results("SELECT * FROM `wp_users`");  
+
+    //debug($user);
+
+    foreach ($users as $key => $user) {
+        //debug($user->ID);
+        
+
+                            debug($user->ID,false);
+                            if($sexo != 'ambos'){
+                              $usexo = $wpdb->get_results("SELECT * FROM `wp_usermeta` WHERE `user_id` = ".$user->ID." AND `meta_key` = 'sexo' AND `meta_value` = '".$sexo."' ");  
+                            }else{
+                                $usexo = array(0 => $sexo);
+                            }
+                            
+                            if(!empty($usexo)){
+                                
+                                $uedad = $wpdb->get_results("SELECT * FROM `wp_usermeta` WHERE `user_id` = ".$user->ID." AND `meta_key` = 'edad' AND `meta_value` > ".$desde." AND `meta_value` < ".$hasta);  
+                            if(!empty($uedad)){
+                                
+//                               $uestado = $wpdb->get_results("SELECT * FROM `wp_postmeta` WHERE `post_id` = ".$v->ID." AND `meta_key` LIKE 'city_meta_box_country' AND `meta_value` LIKE '".$_POST['estado']."'");
+            
+//                        if(!empty($s2)){
+//                        $s3 = $wpdb->get_results("SELECT * FROM `wp_postmeta` WHERE `post_id` = ".$v->ID." AND `meta_key` LIKE 'city_meta_box_state' AND `meta_value` LIKE '".$_POST['ciudad']."'"); 
+                                
+                            debug($uedad);
+                            if(isset($r)){
                 ?>
                         
                          
@@ -131,7 +179,19 @@ if($error){
                             </div>
                             <div class="clearfix"></div>
                     <?php
+                        }//rrrrrrrrrr
+                            }else{
+                                $error = 'no se ha encontrado ningun usuario en el rango de edad deseado';
+                            }
+                        }  else {
+                            $error = 'no se ha encontrado ningun usuario con el sexo deseado';
                         }
+                        
+                        }
+                        
+                        if($error){
+    echo $error;
+}
 }
 ?>
                         
