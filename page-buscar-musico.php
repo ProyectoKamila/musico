@@ -2,8 +2,8 @@
 <?php 
 $var = $_REQUEST['user'];
 ?>
-<?php
-    $order = 'user_nicename';
+<?php 
+$order = 'user_nicename';
 $users = $wpdb->get_results("SELECT * FROM wp_users WHERE wp_users.user_nicename LIKE '%". $var . "%' ORDER BY $order "); // query users
 ?>
 <section class="">
