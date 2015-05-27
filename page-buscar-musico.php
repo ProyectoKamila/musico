@@ -109,8 +109,8 @@ $users = $wpdb->get_results("SELECT * FROM wp_users WHERE wp_users.user_nicename
                         No he seleccionado nivel
                         <?php } ?>
                     </p>
-                    <p><?php echo get_field('estado', 'user_' . $curauth->ID); ?></p>
-                    <p><?php echo get_field('ciudad', 'user_' . $curauth->ID); ?></p>
+                    <p><?php get_field('estado', 'user_' . $curauth->ID); ?></p>
+                    <p><?php  get_field('ciudad', 'user_' . $curauth->ID); ?></p>
                     <p>Sexo:<?php echo get_field('sexo', 'user_' . $curauth->ID); ?></p>   
                     <p>Edad:<?php echo get_field('edad', 'user_' . $curauth->ID); ?></p>   
                 </div>

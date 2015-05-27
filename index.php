@@ -13,7 +13,7 @@
                             <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-xs-12">
                                 <div class="container-fluid">
                                     <div class="row">
-                                        <form action="<?php echo home_url('/search-ad'); ?>" method="post">
+                                        <form action="<?php echo home_url('/custom-perfiles'); ?>" method="post" class="bus">
                                             <input type="hidden" name="simple" value="true"/>
                                             <div id="musico" class="col-lg-6 col-md-6 col-sm-6 col-xs-12 search-type ">
                                                 MUSICO
@@ -61,15 +61,15 @@
 
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content-large">
                                                 <input id='text' type="text" name="false-search" id="false-search" class="col-lg-11 col-md-11 col-sm-10 col-xs-10 large-input" placeholder="Busqueda" required>
-                                                <!--<buttom type="buttom" class="col-lg-1 col-md-1 col-sm-2 col-xs-2 enviar" id="lupa"></buttom>-->
+                                                
                                                 <input type="submit" class="col-lg-1 col-md-1 col-sm-2 col-xs-2 enviar" value=""/>
-                                        </form>
+                                        
 
 
 
                                     </div>
 
-
+</form>
                                 </div>
                             </div>
                         </div>
@@ -157,6 +157,18 @@
                     $('#ciudad').html(data);
                 }
             });
+        });
+        $('#musico').click(function(){
+            $('#tocada').removeClass('active');
+            $('#musico').addClass('active');
+            $('.bus').attr('action','<?php echo home_url('/custom-perfiles'); ?>');
+            
+        });
+        
+        $('#tocada').click(function(){
+            $('#musico').removeClass('active');
+            $('#tocada').addClass('active');
+            $('.bus').attr('action','<?php echo home_url('/search-ad'); ?>');
         });
     });
 </script>

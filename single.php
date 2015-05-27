@@ -3,8 +3,8 @@
     <div class="container">
         <div class="row">
             <?php
-            get_template_part('sidebar-box');
-            wp_reset_query();
+            //get_template_part('sidebar-box');
+            //wp_reset_query();
             ?>
             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                 <h3 class="">Anuncios</h3>

@@ -52,8 +52,13 @@
                         No he seleccionado nivel
                         <?php } ?>
                     </p>
-                    <p><?php echo get_field('estado', 'user_' . $curauth->ID); ?></p>
-                    <p><?php echo get_field('ciudad', 'user_' . $curauth->ID); ?></p>
+                   <p>Estado: <?php $est = get_field('estado', 'user_' . $curauth->ID);
+                            echo $est->post_name;
+                        ?></p>
+                            <p>Ciudad: <?php $cit =  get_field('ciudad', 'user_' . $curauth->ID); 
+                            echo $cit->post_name;
+                            ?>
+                            </p>
                     <p>Sexo:<?php echo get_field('sexo', 'user_' . $curauth->ID); ?></p>   
                     <p>Edad:<?php echo get_field('edad', 'user_' . $curauth->ID); ?></p>   
                 </div>

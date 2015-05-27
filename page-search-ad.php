@@ -10,7 +10,7 @@ get_header('');
                     <h2>La comunidad”Músico Disponible” es una pequeña red social que permite un socio busca urgentemente músicos</h2>
                 </div>
             </div>
-          <?php get_template_part('sidebar-box');?>
+          <?php //get_template_part('sidebar-box');?>
             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                 <h3 class="">Anuncios</h3>
                 <div class="container-fluid items">
@@ -77,7 +77,7 @@ if(!empty($s) ){
                 
             }else{
                 $error = 'no se ha encontrado ningun resultado para';
-                debug($error);
+                //debug($error);
             }
             
         }else{

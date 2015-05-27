@@ -37,7 +37,7 @@ show_admin_bar(false);
 function theme_custom_types() {
     add_custom_post_type(array(
         'type' => 'Anuncios',
-        'supports'=>array('comments', 'editor', 'author','title '),
+        'supports'=>array('comments', 'editor', 'author','title'),
         'singular' => 'anuncio'
     ));
 }
@@ -103,3 +103,14 @@ function pk_checked_selected_helper( $helper, $current, $echo, $type ) {
 
 	return $result;
 }
+function email_members($post)  {
+    global $wpdb;
+ debug($post,false);
+ $post = query_posts(array('post_type'=>'anuncios', 'post_id'=>$post));
+//    $usersarray = $wpdb->get_results("SELECT user_email FROM $wpdb->users;");    
+//    $users = implode(",", $usersarray);
+//    mail($users, "New WordPress recipe online!", 'A new recipe have been published on http://www.wprecipes.com');
+    return $post;
+}
+
+add_action('publish_post', 'email_members');
